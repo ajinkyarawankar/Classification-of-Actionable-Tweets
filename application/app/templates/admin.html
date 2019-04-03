@@ -1,0 +1,62 @@
+{%extends 'base.html' %}
+
+{% block nav_right %}
+    {%if logged_in %}
+	  <li><a href="/admin"><span class="glyphicon glyphicon-user"></span> {{username}}</a></li>
+	  <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Log out</a></li>
+    {%endif%}
+
+    
+{% endblock %}
+
+{%block content%}
+{%if logged_in%}
+
+	<div class="row header">
+								<div class="cell">
+								Date
+								</div>
+							<div class="cell">
+								Topic
+							</div>
+							<div class="cell">
+								Tweet
+							</div>
+							<div class="cell">
+								Action
+							</div>
+							<div class="cell">
+								Tweet Link
+							</div>
+	</div>
+{% for post in tweets %}                        
+<div class="row" id="tweet{{post.Tweet_id}}">
+								<div class="cell" data-title="Date">
+										<a>{{post.date_}}</a>
+								</div>
+								<div class="cell" data-title="Topic">
+                                    <a>{{post.topic}}</a>
+								</div>
+								<div class="cell" data-title="Tweet">
+                                	<a>{{post.tweet_content}}</a>   
+                                </div>
+								<div class="cell" data-title="Action">
+                                    <a>{{post.tweet_action}}</a>
+								</div>
+								<div class="cell" data-title="Location">
+										<a href=http://twitter.com/Atechtrader/status/{{post.Tweet_id}}>tz.com/123</a>
+								</div>
+								<div class="cell" data-title="close">
+									<button style="width:70px;font-size: 30px;padding-top:10px " id="delete{{post.Tweet_id}}" name="delete{{post.Tweet_id}}" onclick="del_tweet('{{post.Tweet_id}}')" class="close" aria-label="Close">
+										  <span aria-hidden="true" style="color: red">&times;</span>
+                 					 </button>
+                  
+</div>
+</div>
+{%endfor%}
+{%else%}
+<a>nn</a>
+{%endif%}
+{% endblock %}
+
+
