@@ -1,9 +1,12 @@
 {%extends 'base.html' %}
 
 {% block nav_right %}
-    {%if logged_in %}
-	  <li><a href="/admin"><span class="glyphicon glyphicon-user"></span> {{username}}</a></li>
-	  <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Log out</a></li>
+	{%if logged_in %}
+		<li style="float:right"><a href="/logout">Log out</a></li>
+	  <li style="float:right"><a href="/admin"> {{username.upper()}}</a></li>
+		
+
+	  
     {%endif%}
 
     
@@ -38,13 +41,14 @@
                                     <a>{{post.topic}}</a>
 								</div>
 								<div class="cell" data-title="Tweet">
-                                	<a>{{post.tweet_content}}</a>   
+                                	<blockquote class="twitter-tweet" tw-align-center data-lang="en"><a href="http://twitter.com/Atechtrader/status/{{post.Tweet_id}}"></a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+			 
                                 </div>
 								<div class="cell" data-title="Action">
                                     <a>{{post.tweet_action}}</a>
 								</div>
 								<div class="cell" data-title="Location">
-										<a href=http://twitter.com/Atechtrader/status/{{post.Tweet_id}}>tz.com/123</a>
+								<a href="http://twitter.com/Atechtrader/status/{{post.Tweet_id}}">Tweet Link</a>	 
 								</div>
 								<div class="cell" data-title="close">
 									<button style="width:70px;font-size: 30px;padding-top:10px " id="delete{{post.Tweet_id}}" name="delete{{post.Tweet_id}}" onclick="del_tweet('{{post.Tweet_id}}')" class="close" aria-label="Close">
